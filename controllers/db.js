@@ -28,6 +28,7 @@ const CreateUser = (name, email, res) => {
   });
 };
 var CreateRoom = (roomName, timeStamp, res) => {
+  var roomName=roomName.toLowerCase();
   Chat.findOne({ roomName: roomName }, (err, data) => {
     if (err) console.log(err);
     if (data) {
@@ -51,6 +52,7 @@ var CreateRoom = (roomName, timeStamp, res) => {
 };
 var enrollUser = (email, timeStamp, roomName, res) => {
   var final = {};
+  var roomName=roomName.toLowerCase();
   Chat.findOne({ roomName: roomName }, (err, data) => {
     if (err) console.log(err);
     if (data) {
@@ -120,6 +122,7 @@ var sendMsg = (roomName, message, sender, timeStamp, res) => {
     timeStamp: timeStamp,
   });
   var len = 0;
+  var roomName=roomName.toLowerCase();
   Chat.findOne({ roomName: roomName }, (err, data) => {
     if (err) console.log(err);
     if (data) {
@@ -136,6 +139,7 @@ var sendMsg = (roomName, message, sender, timeStamp, res) => {
 };
 
 var askMsg = (rName, timeStamp, res) => {
+  var rName=rName.toLowerCase();
   Chat.findOne({ roomName: rName }, (err, data) => {
     if (err) console.log(err);
     if (data) {
